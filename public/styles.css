@@ -1,0 +1,914 @@
+
+/* =========================================
+   CHAT DE KAREN 🌸
+   ESTILO CUTE + RESPONSIVE
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #5b5268;
+
+    background:
+        radial-gradient(circle at 10% 15%, #ffd6e7 0%, transparent 25%),
+        radial-gradient(circle at 90% 85%, #ddd1ff 0%, transparent 28%),
+        radial-gradient(circle at 80% 10%, #ffe4c9 0%, transparent 20%),
+        linear-gradient(135deg, #fff7fb, #f7f0ff, #fff8f1);
+
+    padding: clamp(10px, 3vw, 25px);
+}
+
+
+/* =========================================
+   TÍTULOS
+   ========================================= */
+
+h2 {
+    margin: 0;
+    padding: clamp(12px, 2vw, 18px);
+
+    text-align: center;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: #6d5a7b;
+
+    font-size: clamp(18px, 2.5vw, 24px);
+}
+
+
+/* =========================================
+   PANTALLA DE BIENVENIDA
+   ========================================= */
+
+#panel-bienvenida {
+    width: min(92%, 520px);
+
+    margin: clamp(40px, 12vh, 100px) auto;
+
+    padding: clamp(25px, 6vw, 45px);
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border-radius: clamp(22px, 4vw, 30px);
+
+    border: 2px solid rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 25px 60px rgba(184, 145, 190, 0.18),
+        0 8px 20px rgba(120, 90, 130, 0.08);
+
+    text-align: center;
+
+    backdrop-filter: blur(12px);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   DECORACIÓN
+   ========================================= */
+
+#panel-bienvenida::before {
+    content: "🌸";
+
+    display: block;
+
+    font-size: clamp(36px, 8vw, 48px);
+
+    margin-bottom: 10px;
+
+    animation: flotar 3s ease-in-out infinite;
+}
+
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+#panel-bienvenida h2 {
+    color: #b56b9d;
+
+    font-size: clamp(18px, 4vw, 23px);
+
+    line-height: 1.5;
+
+    margin-bottom: clamp(18px, 4vw, 25px);
+}
+
+
+/* =========================================
+   INPUT DEL NOMBRE
+   ========================================= */
+
+#persona {
+    width: 100%;
+    min-width: 0;
+
+    padding: clamp(12px, 3vw, 15px);
+
+    border: 2px solid #f0d5e7;
+
+    border-radius: 17px;
+
+    outline: none;
+
+    font-size: clamp(14px, 2.5vw, 16px);
+
+    color: #66586f;
+
+    background: #fffafd;
+
+    transition: all 0.3s ease;
+}
+
+
+#persona::placeholder {
+    color: #b7a9bd;
+}
+
+
+#persona:focus {
+    border-color: #d99bc5;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(217, 155, 197, 0.15),
+        0 8px 18px rgba(181, 107, 157, 0.10);
+}
+
+
+/* =========================================
+   BOTONES
+   ========================================= */
+
+button {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: clamp(12px, 3vw, 15px);
+
+    border: none;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e98fbc,
+            #b99ae8
+        );
+
+    color: white;
+
+    font-size: clamp(14px, 2.5vw, 16px);
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+        0 8px 20px rgba(190, 133, 190, 0.25);
+
+    touch-action: manipulation;
+}
+
+
+button:hover {
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e681b2,
+            #ae8ce3
+        );
+
+    box-shadow:
+        0 12px 25px rgba(190, 133, 190, 0.32);
+}
+
+
+button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   APLICACIÓN DEL CHAT
+   ========================================= */
+
+#app-chat {
+    width: min(95%, 750px);
+
+    margin: clamp(15px, 4vw, 30px) auto;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border-radius: clamp(20px, 4vw, 28px);
+
+    overflow: hidden;
+
+    border: 2px solid rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 25px 65px rgba(155, 126, 170, 0.20),
+        0 8px 20px rgba(120, 90, 130, 0.08);
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================================
+   ENCABEZADO
+   ========================================= */
+
+#app-chat h2:first-child {
+    margin: 0;
+
+    padding: clamp(15px, 3vw, 21px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e58bb9,
+            #b99be7
+        );
+
+    color: white;
+
+    font-size: clamp(16px, 3vw, 19px);
+
+    letter-spacing: 0.4px;
+
+    text-shadow:
+        0 2px 5px rgba(90, 60, 90, 0.15);
+}
+
+
+/* =========================================
+   NUBE DEL CHAT
+   ========================================= */
+
+.nube {
+    max-width: min(85%, 500px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #d98fbb,
+            #a994df
+        );
+
+    color: white;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 7px 18px rgba(170, 125, 180, 0.20);
+
+    display: inline-block;
+
+    padding: 11px 18px;
+
+    position: relative;
+
+    vertical-align: top;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    font-size: clamp(13px, 2vw, 15px);
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+.nube::before {
+    background: #d98fbb;
+
+    content: "\00a0";
+
+    display: block;
+
+    height: 15px;
+
+    position: absolute;
+
+    top: 10px;
+
+    transform: rotate(29deg) skew(-35deg);
+
+    width: 18px;
+}
+
+
+.box {
+    float: right;
+
+    max-width: 85%;
+
+    margin: 12px 25px 12px 20px;
+}
+
+
+.box::before {
+    box-shadow:
+        -2px 2px 2px 0 rgba(178, 150, 180, .20);
+
+    left: -8px;
+}
+
+
+/* =========================================
+   VENTANA DE MENSAJES
+   ========================================= */
+
+#ventana-mensajes {
+    width: 100%;
+
+    height: clamp(300px, 55vh, 420px);
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    padding: clamp(12px, 3vw, 20px);
+
+    background:
+        radial-gradient(
+            circle at top right,
+            #fff0f7,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            #f0ebff,
+            transparent 35%
+        ),
+        #fffafd;
+
+    border-top: 1px solid #f2ddeb;
+
+    border-bottom: 1px solid #f2ddeb;
+
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================
+   MENSAJES
+   ========================================= */
+
+#output {
+    width: 100%;
+
+    overflow-wrap: anywhere;
+}
+
+
+#output p {
+    width: fit-content;
+
+    max-width: min(80%, 550px);
+
+    margin: 10px 5px;
+
+    padding: 13px 17px;
+
+    background: #ffffff;
+
+    border: 1px solid #f0dce9;
+
+    border-radius: 18px;
+
+    color: #65596d;
+
+    box-shadow:
+        0 5px 14px rgba(170, 130, 175, 0.08);
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+#output strong {
+    color: #b56b9d;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ESTÁ ESCRIBIENDO
+   ========================================= */
+
+#escribiendo-mensaje p {
+    margin: 5px;
+
+    padding: 8px 15px;
+
+    color: #a28fa8;
+
+    font-size: 13px;
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+input {
+    width: 100%;
+
+    min-width: 0;
+
+    padding: clamp(12px, 3vw, 14px) 17px;
+
+    border: none;
+
+    border-bottom: 1px solid #f0dce9;
+
+    background: white;
+
+    color: #5e5265;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    font-size: clamp(14px, 2.5vw, 16px);
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+
+input::placeholder {
+    color: #b7a9bd;
+}
+
+
+input:focus {
+    background: #fffafd;
+
+    border-bottom: 2px solid #d99bc5;
+}
+
+
+/* =========================================
+   NOMBRE DEL USUARIO
+   ========================================= */
+
+#usuario {
+    color: #b05f94;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff0f7,
+            #faf3ff
+        );
+
+    border-bottom: 1px solid #efd2e3;
+}
+
+
+/* =========================================
+   ARCHIVOS
+   ========================================= */
+
+#archivo {
+    width: 100%;
+
+    padding: 12px 15px;
+
+    background: #fffafd;
+
+    border-bottom: 1px solid #f0dce9;
+
+    cursor: pointer;
+
+    color: #75667c;
+
+    font-size: clamp(13px, 2.5vw, 15px);
+}
+
+
+#archivo::file-selector-button {
+    background:
+        linear-gradient(
+            135deg,
+            #f7d5e7,
+            #e6dcfa
+        );
+
+    color: #8e5d7e;
+
+    border: none;
+
+    padding: 9px 14px;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-right: 10px;
+
+    transition: 0.3s;
+}
+
+
+#archivo::file-selector-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #efc2db,
+            #d9cbf4
+        );
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   IMÁGENES
+   ========================================= */
+
+#output img {
+    display: block;
+
+    width: auto;
+
+    max-width: min(100%, 250px);
+
+    height: auto;
+
+    max-height: 250px;
+
+    margin-top: 8px;
+
+    border-radius: 18px;
+
+    border: 3px solid #f2dce9;
+
+    box-shadow:
+        0 8px 20px rgba(175, 125, 165, 0.15);
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   VIDEOS
+   ========================================= */
+
+#output video {
+    display: block;
+
+    width: 100%;
+
+    max-width: 300px;
+
+    height: auto;
+
+    margin-top: 8px;
+
+    border-radius: 18px;
+
+    border: 3px solid #e6dcf5;
+
+    box-shadow:
+        0 8px 20px rgba(145, 120, 175, 0.15);
+}
+
+
+/* =========================================
+   AUDIO
+   ========================================= */
+
+#output audio {
+    width: min(100%, 280px);
+
+    max-width: 100%;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================
+   ENLACES
+   ========================================= */
+
+#output a {
+    display: inline-block;
+
+    max-width: 100%;
+
+    margin-top: 8px;
+
+    padding: 7px 12px;
+
+    color: #a05b91;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    border-radius: 10px;
+
+    transition: 0.3s;
+
+    overflow-wrap: anywhere;
+}
+
+
+#output a:hover {
+    background: #fff0f7;
+
+    color: #8c4c7e;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+#ventana-mensajes::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+#ventana-mensajes::-webkit-scrollbar-track {
+    background: #fff0f7;
+
+    border-radius: 10px;
+}
+
+
+#ventana-mensajes::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            180deg,
+            #e5a4c6,
+            #bda6e9
+        );
+
+    border-radius: 10px;
+}
+
+
+#ventana-mensajes::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #d889b3,
+            #a58bd8
+        );
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 15px;
+    }
+
+    #app-chat {
+        width: min(96%, 700px);
+    }
+
+    #ventana-mensajes {
+        height: 55vh;
+        min-height: 320px;
+    }
+
+    #output p {
+        max-width: 85%;
+    }
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 8px;
+    }
+
+    #panel-bienvenida {
+        width: 96%;
+
+        margin: 35px auto;
+
+        padding: 25px 18px;
+    }
+
+    #app-chat {
+        width: 100%;
+
+        margin: 10px auto;
+
+        border-radius: 20px;
+    }
+
+    #app-chat h2:first-child {
+        padding: 17px 12px;
+
+        font-size: 17px;
+    }
+
+    #ventana-mensajes {
+        height: 52vh;
+
+        min-height: 280px;
+
+        padding: 10px;
+    }
+
+    #output p {
+        max-width: 92%;
+
+        padding: 11px 13px;
+
+        font-size: 14px;
+    }
+
+    .nube {
+        max-width: 88%;
+
+        font-size: 14px;
+
+        padding: 10px 14px;
+    }
+
+    .box {
+        max-width: 88%;
+
+        margin-right: 10px;
+    }
+
+    #output img {
+        max-width: 100%;
+
+        max-height: 220px;
+    }
+
+    #output video {
+        max-width: 100%;
+    }
+
+    #output audio {
+        width: 100%;
+    }
+
+    #archivo {
+        padding: 10px;
+    }
+
+    #archivo::file-selector-button {
+        padding: 8px 10px;
+
+        margin-right: 5px;
+    }
+}
+
+
+/* =========================================
+   CELULARES MUY PEQUEÑOS
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 5px;
+    }
+
+    #panel-bienvenida {
+        width: 98%;
+
+        margin: 20px auto;
+
+        padding: 22px 14px;
+
+        border-radius: 20px;
+    }
+
+    #panel-bienvenida h2 {
+        font-size: 17px;
+    }
+
+    #panel-bienvenida::before {
+        font-size: 38px;
+    }
+
+    #app-chat {
+        border-radius: 16px;
+    }
+
+    #app-chat h2:first-child {
+        font-size: 15px;
+
+        padding: 14px 8px;
+    }
+
+    #ventana-mensajes {
+        height: 50vh;
+
+        min-height: 250px;
+
+        padding: 8px;
+    }
+
+    #output p {
+        max-width: 95%;
+
+        font-size: 13px;
+    }
+
+    .nube {
+        max-width: 92%;
+
+        font-size: 13px;
+    }
+
+    .box {
+        max-width: 92%;
+
+        margin-right: 5px;
+    }
+}
+
+
+/* =========================================
+   PANTALLAS ALTAS
+   ========================================= */
+
+@media (min-height: 800px) and (min-width: 700px) {
+
+    #ventana-mensajes {
+        height: min(55vh, 520px);
+    }
+}
+
+
+/* =========================================
+   DISPOSITIVOS TÁCTILES
+   ========================================= */
+
+@media (hover: none) {
+
+    button:hover {
+        transform: none;
+    }
+
+    #archivo::file-selector-button:hover {
+        transform: none;
+    }
+}
+
